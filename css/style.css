@@ -1,0 +1,99 @@
+h1{
+
+    text-align:center;
+    
+    display:inline-block;
+    padding:1rem;
+    
+    text-shadow: 4px 2px #3244e6;
+    color:white;
+    
+}
+
+
+.errormsg,.mainerrormsg{
+
+    color:#ff0000;
+    
+    
+}
+
+.mainerrormsg{
+    display: flex;
+    justify-content: center;
+}
+
+
+.container{
+
+    display:flex;
+    justify-content: center;
+    background-color:white;
+    flex-direction:column;
+    align-items: center;
+    border: 2px solid;
+    border-color: black;
+    background-color: rgb(116, 116, 243);
+
+}
+
+
+
+
+label{
+
+    font-weight: bold;
+    width:50px;
+    float:left;
+    padding-right:24px;
+    
+}
+
+.form-val{
+    float:left;
+    width:calc(100% - 100px);
+}
+
+.form-element{
+    display: flex;
+    justify-content: space-between;
+   
+    
+   
+}
+
+.subbutton, .resbutton{
+    display:flex;
+    justify-content: center;
+    margin: 2rem 0;
+    flex: 0 0 50%;
+   
+   
+
+    
+}
+
+.subbutton input, .resbutton input{
+
+    border:2px solid ;
+    border-radius: 8px;
+    height:2rem;
+    width:6rem;
+    font-weight: bold;
+
+    background-color: white;
+    text-transform: uppercase;
+    text-shadow: 4px 2px transparent;
+    color: black;
+    
+
+
+}
+
+
+.buttonbox{
+    display: flex;
+    justify-content: space-between;
+}
+
+
