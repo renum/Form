@@ -9,7 +9,7 @@
   <body>
 
     <?php
-        $name = $email = $website = $comment = $gender = $preference= $availability= "";
+        $name = $email = $website = $comment = $gender = $preference= $availability[]= "";
         $nameerr = $emailerr = $gendererr= $commenterr= $websiteerr= $preferr= $availerr= "";
        
 
@@ -87,11 +87,13 @@
             //Validate Availability
 
 
-            if(empty($_POST["availability"])){
+            if(empty($_POST["jan"]) && empty($_POST["feb"]) && empty($_POST["march"])  ){
                 $availerr="Please check availability.";
             }
             else{
-                $availability=test_input($_POST["availability"]);
+
+                $availability =array($_POST["jan"],$_POST["feb"],$_POST["march"]);
+                        
             }
             
         }
@@ -160,31 +162,27 @@
 
             <div class="form-element">
                 <label for="preference">Shift Preference:</label>
-                <div class="form-val">
-                    
+                <div class="form-val">                   
                     <select name="preference">
-                        <option value="morning" <?php if(isset($preference) && $preference=="morning") echo "Morning"; ?>>Morning</option>
-                        <option value="evening" <?php if(isset($preference) && $preference=="evening") echo "Evening"; ?>>Evening</option>
-                        <option value="afternoon" <?php if(isset($preference) && $preference=="afternoon") echo "Afternoon"; ?>>Afternoon</option>
-                    </select>
-                                       
+                        <option value="morning" <?php if(isset($preference)&& $preference=="morning") echo "selected"; ?>>Morning</option>
+                        <option value="evening" <?php if(isset($preference)&& $preference=="evening") echo "selected"; ?>>Evening</option>
+                        <option value="afternoon" <?php if(isset($preference)&& $preference=="afternoon") echo "selected"; ?>>Afternoon</option>
+                        <option value="" <?php if(isset($preference)&& $preference=="") echo "selected"; ?>></option>
+                    </select>                                       
                 </div>
-                <span class="errormsg preferr">*<?php echo $preferr;?></span>
-                
+                <span class="errormsg preferr">*<?php echo $preferr;?></span>                
                 
             </div><br/>
 
             <div class="form-element">
-                <label for="availability">Availability:</label>
-                <div class="form-val">
-                    
-                   <input type="checkbox" name="availability" value="Immedicate">Immediate<br/>
-                   <input type="checkbox" name="availability" value="Later">Later<br/>
-                                       
+                <label for="availability">Availability Month:</label>
+                <div class="form-val">                
+                   
+                   <input type="checkbox"  class="check" name="jan" value="jan" <?php  if(isset($availability) && in_array("jan",$availability)) echo "checked";?> >Jan<br/>
+                   <input type="checkbox" class="check" name="feb" value="feb" <?php  if(isset($availability) && in_array("feb",$availability)) echo "checked";?> >Feb<br/>
+                   <input type="checkbox" class="check" name="march" value="march" <?php  if(isset($availability) && in_array("march",$availability)) echo "checked";?> >March<br/>                                       
                 </div>
-                <span class="errormsg preferr">*<?php echo $availerr;?></span>
-                
-                
+                <span class="errormsg availerr">*<?php echo $availerr;?></span>                                
             </div><br/>
 
 
@@ -201,20 +199,24 @@
 
     <?php
             
-            echo "<h2>Your Input:</h2>";
-            echo $name;
+            echo "  <h2>Your Input:</h2>";
+            echo "<b>Name: </b>". "&nbsp;&nbsp;". $name;
             echo "<br>";
-            echo $email;
+            echo "<b>Email: </b> ". "&nbsp;&nbsp;". $email;
             echo "<br>";
-            echo $website;
+            echo "<b>Website: </b>"."&nbsp;&nbsp;". $website;
             echo "<br>";
-            echo $comment;
+            echo "<b>Comments: </b>". "&nbsp;&nbsp;". $comment;
             echo "<br>";
-            echo $gender;
+            echo "<b>Gender: </b>". "&nbsp;&nbsp;". $gender;
             echo "<br>";
-            echo $preference;
+            echo "<b>Shift preference: </b>" ."&nbsp;&nbsp;". $preference;
             echo "<br>";
-            echo $availability;
+            echo "<b>Available in month of : </b>" . "&nbsp;&nbsp;";
+            foreach($availability as $x){
+                echo $x."\t";
+            }
+
 ?>
 
    <script type="text/javascript" src="js/script.js"></script>
