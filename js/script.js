@@ -36,9 +36,10 @@ document.addEventListener("DOMContentLoaded",
                                 Preferr=document.querySelector(".preferr");
                                 
                                 Availability=document.getElementsByClassName("check");
-                                console.log(Availability);
                                 Availerr=document.querySelector(".availerr");
                                 
+
+                                Output=document.querySelector(".output");
                                 
                                 document.querySelector(".subbutton").addEventListener("click",validate_form);
                                 document.querySelector(".resbutton").addEventListener("click",reset_form);
@@ -87,11 +88,11 @@ function validate_form(e){
         
     }    
     
-    if (Website.value.length == 0){
+    /*if (Website.value.length == 0){
         Websiteerr.textContent= "Website is required";
         e.preventDefault();   //Stop php execution since there are javascript errors
         
-    }
+    }*/
 
     
     if (!genderChecked){
@@ -152,6 +153,8 @@ function reset_form(e){
     for (i=0;i<Availability.length;i++){
         Availability[i].checked=false;
     }
+
+    Output.textContent="";
     
 }
 
